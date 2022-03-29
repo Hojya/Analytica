@@ -1,25 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
+
+import CountReports from "./CountReports";
+
+import Favorite from "./Favorite";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return  <Router>
+  <nav className='container-nav'>
+    <div className='fio'>
+    
+      <p className='return-home '>{'<<'} На главную</p> 
+      <p className='login '>Иванов Иван Иванович</p>
     </div>
-  );
+  <div className='group-link'>
+    <Link to="/" className='link'>общие Отчеты</Link>
+    <Link to="/favorite" className='link'>мои отчеты</Link>
+  </div> 
+  
+  
+</nav>
+
+<Routes>
+
+  
+  <Route path="/" element={<CountReports/>}/>
+  <Route path="/favorite" element={<Favorite/>}/>
+  
+</Routes>
+
+</Router>
+
+
+
+
 }
 
 export default App;
